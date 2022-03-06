@@ -24,11 +24,13 @@ Stack CreateStack( ){
     s->Element = MaxElements;
     s->Next =NULL;
 }
+//define the Create operation
 
 void DisposeStack( Stack S ){
     MakeEmpty(S);
     free(S);
 }
+//define the Dispose operation
 void MakeEmpty( Stack S ){
     while(!IsEmpty(S))
         Pop(S);
@@ -40,10 +42,12 @@ void Push( ElementType X, Stack S ){
     Node->Next = S->Next;
     S->Next = Node;
 }
+//the main operation of Stack -- push
 
 ElementType Top( Stack S ){
     return S->Next->Element;
 }
+//find the top of the stack element
 
 void Pop( Stack S ){
     if(IsEmpty(S))
@@ -55,6 +59,7 @@ void Pop( Stack S ){
         free(FirstCell);
     }
 }
+//the main operation of Stack -- pop
 
 int SearchStack( ElementType X,Stack S ){
     struct StackRecord* SearchPoint;
@@ -67,4 +72,5 @@ int SearchStack( ElementType X,Stack S ){
     }
     return 0;
 }
+//add a operation to find the element
 

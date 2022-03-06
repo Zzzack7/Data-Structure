@@ -9,8 +9,6 @@ typedef int ElementType;
 struct StackRecord;
 typedef struct StackRecord* Stack;
 
-
-
 int IsEmpty( Stack S );
 Stack CreateStack();
 void DisposeStack( Stack S );
@@ -19,5 +17,6 @@ void Push( ElementType X, Stack S );
 ElementType Top( Stack S );
 void Pop( Stack S );
 int SearchStack( ElementType X,Stack S );
+//Define the basic functions
 
 #endif //STACK_STACK_H

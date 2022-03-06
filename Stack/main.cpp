@@ -15,11 +15,11 @@ int main() {
 //    num= Top(test);
 //    printf("the Top number is %d",num);
 
+
 //    b = SearchStack(5,test);
 //    if(b==1)
 //        printf("the number is exist in Stack");
 //    else
 //        printf("the number isn't exist");
-
 
 }

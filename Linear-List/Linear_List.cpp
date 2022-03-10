@@ -8,41 +8,44 @@
 
 linear_list_t *Create(void){
     linear_list_t *L;
-    L = (linear_list_t*) malloc(sizeof (linear_list_t));
+    L = (linear_list_t*) malloc(sizeof (linear_list_t*));
     if(L)
         L->a_len = 0;
     return L;
 }
 
 void Destroy(linear_list_t *L){
-
+    free(L);
 }
 void Set_null(linear_list_t *L){
-
+    L->a_len=0;
 }
 int Length(linear_list_t *L){
-    return L->a_len+1;
+    return L->a_len;
 }
 
 elem_t Get(linear_list_t *L, int i){
-    if(i>L->a_len)
-        printf("there is not exist the element\n");
+    if(i>L->a_len||i<0)
+        return SUBSCRIPT;
     else
         printf("the number is ");
         return L->a[i];
 }
 
 error_t Insert(linear_list_t *L, elem_t x, int i){
-    if(i>MAXSIZE)
+    if(i>MAXSIZE||i<0)
         return OVERFLOW;
     else{
-        while(i<=L->a_len){
-            int num=L->a_len;
-            L->a[num+1]=L->a[num];
-            num--;
-            i++;
+        int num=L->a_len;
+        int j=i;
+        if(i>0&&i<L->a_len) {
+            while (i <= L->a_len) {
+                L->a[num] = L->a[num-1];
+                num--;
+                i++;
+            }
         }
-        L->a[i]=x;
+        L->a[j]=x;
         L->a_len++;
     }
 }
@@ -61,10 +64,9 @@ error_t Remove(linear_list_t *L, int i){
 }
 int Locate(linear_list_t *L, elem_t x){
     int num;
-    for(num=0;num<=L->a_len;num++){
-        if(L->a[num]==x)
+    for(num=0;num<=L->a_len;num++) {
+        if (L->a[num] == x)
             return num;
-        else
-            printf("there isn't exist this element");
     }
+    return -1;
 }

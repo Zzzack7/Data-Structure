@@ -22,10 +22,12 @@ void Add(ElementType X , DList L){
     DList AddNode;
     AddNode = (struct DNode*) malloc(sizeof (struct DNode));
 
+    while (L->Next!=NULL)
+        L = L->Next;
     AddNode->Element = X;
     AddNode->Prev = L;
     L->Next = AddNode;
-    L = AddNode;
+    AddNode->Next = NULL;
 
 }
 void Insert( ElementType X, DList L ){
